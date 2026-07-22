@@ -1,0 +1,17 @@
+services:
+  9router:
+    image: decolua/9router:latest
+    container_name: 9router
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "127.0.0.1:20128:20128"
+    volumes:
+      - ./data:/app/data
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "-", "http://127.0.0.1:20128/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 40s
