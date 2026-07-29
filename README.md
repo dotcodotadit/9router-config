@@ -11,12 +11,28 @@ AI Router & Token Saver for Claude Code, Cursor, Codex, and 40+ AI providers.
 | AI Gateway | ai.tibatiba-sah.biz.id | 4000 | Python (`~/ai-gateway/`) |
 | Seragam Dashboard | seragam.tibatiba-sah.biz.id | 5000 | Python (`~/seragam-dashboard/`) |
 
+## Prerequisites
+
+- Docker Engine 25+ with Compose plugin (`docker compose version`)
+- Caddy installed for reverse proxy (see [INSTALL.md](docs/INSTALL.md))
+- `.env` file with secrets populated (see below)
+
 ## Quick Start
 
 ```bash
+# 1. Clone & enter directory
 cd /home/ubuntu/9router
+
+# 2. Create .env from example (EDIT THIS — replace all CHANGE_ME)
+cp .env.example .env
+nano .env
+
+# 3. Start 9router
 docker compose up -d
-docker logs -f 9router
+
+# 4. Verify running
+docker compose ps
+curl -s http://127.0.0.1:20128/api/health
 ```
 
 Dashboard: https://router.tibatiba-sah.biz.id
@@ -28,7 +44,7 @@ Edit `.env` for secrets. See `.env.example` for all variables.
 Key variables:
 - `INITIAL_PASSWORD` — first login password
 - `JWT_SECRET` — JWT signing secret
-- `BASE_URL` — production domain
+- `BASE_URL` — production domain (e.g. `https://router.tibatiba-sah.biz.id`)
 - `API_KEY_SECRET` — HMAC secret for API keys
 - `AUTH_COOKIE_SECURE=true` — behind HTTPS proxy
 - `REQUIRE_API_KEY=true` — enforce API key on /v1/*
@@ -46,9 +62,17 @@ Key variables:
 ./scripts/update.sh
 ```
 
-## Caddy Config
+## Caddy Configuration
 
-Located at `/etc/caddy/Caddyfile` (system) and `caddy/Caddyfile` (repo copy).
+Edit `/etc/caddy/Caddyfile` (system) or `caddy/Caddyfile` (repo copy).
+
+```caddyfile
+router.tibatiba-sah.biz.id {
+    reverse_proxy localhost:20128
+}
+```
+
+Load new config: `sudo systemctl reload caddy`
 
 ## License
 
