@@ -7,7 +7,7 @@ AI Router & Token Saver for Claude Code, Cursor, Codex, and 40+ AI providers.
 
 | Service | Domain | Port | Source |
 |---------|--------|------|--------|
-| 9Router | router.tibatiba-sah.biz.id | 20128 | Docker (`decolua/9router:latest`) |
+| 9Router | agentic-adit.tibatiba-sah.biz.id | 20128 | Docker (`decolua/9router:latest`) |
 | AI Gateway | ai.tibatiba-sah.biz.id | 4000 | Python (`~/ai-gateway/`) |
 | Seragam Dashboard | seragam.tibatiba-sah.biz.id | 5000 | Python (`~/seragam-dashboard/`) |
 
@@ -35,7 +35,7 @@ docker compose ps
 curl -s http://127.0.0.1:20128/api/health
 ```
 
-Dashboard: https://router.tibatiba-sah.biz.id
+Dashboard: https://agentic-adit.tibatiba-sah.biz.id
 
 ## Configuration
 
@@ -44,7 +44,7 @@ Edit `.env` for secrets. See `.env.example` for all variables.
 Key variables:
 - `INITIAL_PASSWORD` — first login password
 - `JWT_SECRET` — JWT signing secret
-- `BASE_URL` — production domain (e.g. `https://router.tibatiba-sah.biz.id`)
+- `BASE_URL` — production domain (e.g. `https://agentic-adit.tibatiba-sah.biz.id`)
 - `API_KEY_SECRET` — HMAC secret for API keys
 - `AUTH_COOKIE_SECURE=true` — behind HTTPS proxy
 - `REQUIRE_API_KEY=true` — enforce API key on /v1/*
@@ -67,7 +67,7 @@ Key variables:
 Edit `/etc/caddy/Caddyfile` (system) or `caddy/Caddyfile` (repo copy).
 
 ```caddyfile
-router.tibatiba-sah.biz.id {
+agentic-adit.tibatiba-sah.biz.id {
     reverse_proxy localhost:20128
 }
 ```

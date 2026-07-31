@@ -9,7 +9,7 @@ Internet  ──►  Caddy (:80, :443 HTTPS)
                   │
                   ├─► ai.tibatiba-sah.biz.id  → localhost:4000 (ai-gateway)
                   ├─► seragam.tibatiba-sah.biz.id → localhost:5000 (seragam dashboard)
-                  └─► router.tibatiba-sah.biz.id → localhost:20128 (9router Container)
+                  └─► agentic-adit.tibatiba-sah.biz.id → localhost:20128 (9router Container)
                                                       │
                                                       └─► DATA_DIR=/home/ubuntu/9router/data
 ```
@@ -87,4 +87,4 @@ docker ps --format "table {{.Names}}\t{{.Status}}"
 curl -i http://localhost:20128/
 
 # Public URL (after Caddy + DNS)
-curl -i https://router.tibatiba-sah.biz.id/
+curl -i https://agentic-adit.tibatiba-sah.biz.id/

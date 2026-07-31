@@ -32,7 +32,7 @@ Generate an origin certificate from Cloudflare dashboard:
   `/etc/caddy/certs/cloudflare-origin.key`
 - Add to Caddy:
   ```caddyfile
-  router.tibatiba-sah.biz.id {
+  agentic-adit.tibatiba-sah.biz.id {
       tls /etc/caddy/certs/cloudflare-origin.pem /etc/caddy/certs/cloudflare-origin.key
       reverse_proxy localhost:20128
   }
@@ -44,7 +44,7 @@ If you prefer Caddy to issue Lets Encrypt certs directly:
 - Set DNS record to **DNS only** (grey cloud)
 - Use plain Caddy config:
   ```caddyfile
-  router.tibatiba-sah.biz.id {
+  agentic-adit.tibatiba-sah.biz.id {
       reverse_proxy localhost:20128
   }
   ```

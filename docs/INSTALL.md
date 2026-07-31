@@ -53,7 +53,7 @@ docker pull decolua/9router:latest
 CADDYFILE=/etc/caddy/Caddyfile
 sudo bash -c "cat >> $CADDYFILE <<EOF
 
-router.tibatiba-sah.biz.id {
+agentic-adit.tibatiba-sah.biz.id {
     reverse_proxy localhost:20128
 }
 EOF"
@@ -72,5 +72,5 @@ cd /home/ubuntu/9router
 docker compose up -d
 ```
 
-Dashboard: `https://router.tibatiba-sah.biz.id`
+Dashboard: `https://agentic-adit.tibatiba-sah.biz.id`
 Default login: `INITIAL_PASSWORD` value from `.env`
